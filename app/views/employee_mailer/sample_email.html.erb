@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <!-- <body>
+    <h1>Hi <%= @user.email %></h1>
+    <p>
+      Sample mail sent using smtp.
+    </p>
+  </body> -->
+
+  <body>
+    Attention <%= @user.email %> sent a leave for <%= @user.holidays.last.date_from %> to <%= @user.holidays.last.date_to %> request.Please check your dashboard.
+    <%#= yield %>
+  </body>
+</html>
