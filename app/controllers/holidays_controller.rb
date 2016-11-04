@@ -4,19 +4,15 @@ class HolidaysController < ApplicationController
   end
 
   def create
-    if (holiday_params[:date_from] <= holiday_params[:date_to])
-      @holiday = current_user.holidays.build(holiday_params)      
-      @holiday.save
-    end
+    @holiday = current_user.holidays.build(holiday_params)
+    @holiday.save    
   end
 
   def update
-    @holiday = Holiday.find(params[:id])
-    if (holiday_params[:date_from] <= holiday_params[:date_to])  
+    @holiday = Holiday.find(params[:id]) 
       if @holiday.update(holiday_params)
         render status: 200, json: @holiday.to_json
-      end 
-    end 
+      end
   end
 
   def destroy
