@@ -30,6 +30,7 @@ var Holiday = React.createClass({
     var id = this.props.holiday.id
     var date_from = this.refs['date_from'].value;
     var date_to = this.refs['date_to'].value;
+    var description = this.refs['description'].value;
     var leave_type = this.refs['leave_type'].value;
 
     if ( date_from > date_to ) {
@@ -59,6 +60,8 @@ var Holiday = React.createClass({
         <td>{this.props.holiday.date_from}</td>
 
         <td>{this.props.holiday.date_to}</td>
+
+        <td>{this.props.holiday.description}</td>
         
         <td>{this.props.holiday.leave_type}</td>
         
@@ -76,15 +79,19 @@ var Holiday = React.createClass({
     return ( 
       <tr>
         <td>
-          <input type="date" placeholder="select Date" ref="date_from" defaultValue={this.props.holiday.date_from} />
+          <input type="date" placeholder="select Date" ref="date_from" className="form-control" defaultValue={this.props.holiday.date_from} />
         </td>
 
         <td>
-          <input type="date" placeholder="select Date" ref="date_to"  defaultValue={this.props.holiday.date_to} />
+          <input type="date" placeholder="select Date" ref="date_to" className="form-control" defaultValue={this.props.holiday.date_to} />
         </td>
 
         <td>
-          <input type="text" placeholder="Leave Type" ref="leave_type"  defaultValue={this.props.holiday.leave_type} />
+          <textarea type="text" placeholder="description" ref="description" className="form-control" defaultValue={this.props.holiday.description} />
+        </td>
+
+        <td>
+          <input type="text" placeholder="Leave Type" ref="leave_type" className="form-control" defaultValue={this.props.holiday.leave_type} />
         </td>
         
         <td>
@@ -99,5 +106,4 @@ var Holiday = React.createClass({
   render: function() {
     return this.state.edit ? this.holidayForm() : this.holidayRow();
   }
-
 });
