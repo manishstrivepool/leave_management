@@ -54,7 +54,6 @@ var Holidays = React.createClass({
 	  				<th>Date_From</th>
 	  				<th>Date_To</th>
 	  				<th>Leave_Type</th>
-	  				<th>Status</th>
 	  			</tr>
 	  		</thead>
 
@@ -62,7 +61,7 @@ var Holidays = React.createClass({
 					{ holidays }
 				</tbody>
 	  		
-	  		</table>
+	  	</table>
   	</div>
   	);
 	}

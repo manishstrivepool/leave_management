@@ -31,13 +31,12 @@ var Holiday = React.createClass({
 		var date_from = this.refs['date_from'].value;
 		var date_to = this.refs['date_to'].value;
 		var leave_type = this.refs['leave_type'].value;
-		var status = this.refs['status'].value;
 		
 		$.ajax({
 			url: 'holidays/'+id,
 			method: 'PUT',
 			dataType: "json",
-			data: { holiday: { date_from: date_from, date_to: date_to, leave_type: leave_type, status: status } },
+			data: { holiday: { date_from: date_from, date_to: date_to, leave_type: leave_type} },
 			success: (data) => {
 				this.setState({
 					edit: false
@@ -56,8 +55,6 @@ var Holiday = React.createClass({
 				<td>{this.props.holiday.date_to}</td>
 				
 				<td>{this.props.holiday.leave_type}</td>
-				
-				<td>{this.props.holiday.status}</td>
 				
 				<td><input type="button" value='Edit' onClick={this.handleToggle}/>
 				
@@ -83,9 +80,7 @@ var Holiday = React.createClass({
 				<td>
 					<input type="text" placeholder="Leave Type" ref="leave_type" className="form-control" defaultValue={this.props.holiday.leave_type} />
 				</td>
-				<td>
-					<input type="text" placeholder="Enter Amount" ref="status" className="form-control" defaultValue={this.props.holiday.status} />
-				</td>
+				
 				<td>
 					<input type="button" className='btn btn-default btn-sm' value='Update' onClick={this.handleEdit} />
 
