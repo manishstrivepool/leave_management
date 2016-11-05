@@ -1,64 +1,74 @@
 var HolidayForm = React.createClass({
-	
-	getInitialState() { 
-		return { 
-			date_from: '',
-			date_to: '',
-			leave_type: '',
-			status:  ''
-		};
-	},
+  
+  getInitialState() { 
+    return {
+      date_from: '',
+      date_to: '',
+      leave_type: ''
+    };
+  },
 
-	handleChange: function(e) {
-		this.setState({
-			[e.target.name]: e.target.value
-		});
-	},
+  validateForData: function() {
+    return (
+      this.state.date_from && this.state.date_to && this.state.leave_type
+     );
+  },
 
-	handleClick: function(e){		
-		$.ajax({
-			url: 'holidays/create',
-			method: 'POST',
-			data: {holiday: this.state},
-			success: (data) => {
-				this.props.onSubmit(data);
-				this.setState({
-					date_from: '',
-					date_to: '',
-					leave_type: '',
-					status:  ''
-				});
-			}
-		});
-	},
+  handleChange: function(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  },
 
-	render: function() {
-	 return (
-	 	<div className="container">
-		 	
-		 	<form className="form-inline">
+  handleClick: function(e){
+    if ( this.state.date_from > this.state.date_to ) {
+      alert("The value of Date_To must be greater than Date_From")
+    }
+    else {
+      $.ajax({
+        url: 'holidays/create',
+        method: 'POST',
+        data: {holiday: this.state},
+        success: (data) => {
+          this.props.onSubmit(data);
+          this.setState({
+            date_from: '',
+            date_to: '',
+            leave_type: ''
+          });
+        }
+      });
+    }
+  },
 
-		 		<div className="form-group">
-		 			<input type="date" placeholder="select Date" name="date_from" className="form-control" onChange={this.handleChange} />
-		 		</div>
+  render: function() {
+   return (
+    <div>
+      
+      <form>
+      <table class="table table-striped">
+        <tr>           
+          <td><strong><label htmlFor="date_from">From </label></strong></td>
+          <input type="date" placeholder="Select Date" name="date_from" onChange={this.handleChange} />          
+        </tr>
+        
+        <tr>         
+          <td><strong><label htmlFor="date_to">To </label></strong></td>
+          <input type="date" placeholder="Select Date" name="date_to" onChange={this.handleChange} />        
+        </tr>
+        
+        <tr>         
+          <td><strong><label htmlFor="leave_type">Type </label></strong></td>
+          <input type="text" placeholder="Leave Type" name="leave_type" onChange={this.handleChange} />        
+        </tr>
 
-		 		<div className="form-group">
-		 			<input type="date" placeholder="select Date" name="date_to" className="form-control" onChange={this.handleChange} />
-		 		</div>
+        <tr>
+          <input type="submit" value="Create Leave" className="btn btn-primary" disabled={!this.validateForData()} onClick={this.handleClick} />          
+        </tr>
+      </table>
 
-		 		<div className="form-group">
-		 			<input type="text" placeholder="Leave Type" name="leave_type" className="form-control" onChange={this.handleChange} />
-		 		</div>
-
-		 		<div className="form-group">
-		 			<input type="text" placeholder="Enter Status" name="status" className="form-control" onChange={this.handleChange} />
-		 		</div>
-
-		 		<input type="submit" value="Create Leave" className="btn btn-primary" disabled={!(this.state.date_from && this.state.date_to)} onClick={this.handleClick} />
-
-	 		</form>
-
-		</div> 	
-	 );
-	}
+      </form>
+    </div>  
+   );
+  }
 });
