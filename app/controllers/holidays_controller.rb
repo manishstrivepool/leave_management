@@ -10,9 +10,9 @@ class HolidaysController < ApplicationController
 
   def update
     @holiday = Holiday.find(params[:id]) 
-      if @holiday.update(holiday_params)
-        render status: 200, json: @holiday.to_json
-      end
+    if @holiday.update(holiday_params)
+      render status: 200, json: @holiday.to_json
+    end
   end
 
   def destroy
