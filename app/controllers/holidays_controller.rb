@@ -4,15 +4,15 @@ class HolidaysController < ApplicationController
   end
 
   def create
-    @holiday = current_user.holidays.build(holiday_params)
-    @holiday.save    
+    holiday = current_user.holidays.build(holiday_params)      
+    holiday.save
   end
 
   def update
     @holiday = Holiday.find(params[:id]) 
-      if @holiday.update(holiday_params)
-        render status: 200, json: @holiday.to_json
-      end
+    if @holiday.update(holiday_params)
+      render status: 200, json: @holiday.to_json
+    end
   end
 
   def destroy
@@ -22,6 +22,6 @@ class HolidaysController < ApplicationController
 
   private
     def holiday_params
-      params.require(:holiday).permit(:date_from, :date_to, :leave_type)
+      params.require(:holiday).permit(:date_from, :date_to, :leave_type, :description)
     end
 end

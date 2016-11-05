@@ -53,6 +53,7 @@ var Holidays = React.createClass({
           <tr>
             <th>Date_From</th>
             <th>Date_To</th>
+            <th>Description</th>
             <th>Leave_Type</th>
           </tr>
         </thead>
