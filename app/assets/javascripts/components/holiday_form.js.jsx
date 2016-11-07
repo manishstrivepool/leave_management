@@ -47,25 +47,27 @@ var HolidayForm = React.createClass({
     <div>
       <form >
         <table>
-          <tr>
-            <td><label htmlFor = "date_from">From</label></td>
-            <td><input type="date" placeholder="select Date" name="date_from" onChange={this.handleChange} /></td>
-          </tr>
-          <tr> 
-            <td><label htmlFor = "date_to">To</label></td>
-            <td><input type="date" placeholder="select Date" name="date_to" onChange={this.handleChange} /></td>
-          </tr>
-          <tr>
-            <td><label htmlFor = "leave_type">Leave Type</label></td>
-            <td><input type="text" placeholder="Leave Type" name="leave_type" onChange={this.handleChange} /></td>
-          </tr>
-          <tr>
-            <td><label htmlFor = "description">Description</label></td>
-            <td><textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} /></td>
-          </tr>
-          <tr>
-            <td><input type="submit" value="Create Leave" className="btn btn-primary" disabled={!this.validateForData()} onClick={this.handleClick} /></td>
-          </tr>
+          <tbody>
+            <tr>
+              <td><label htmlFor = "date_from">From</label></td>
+              <td><input type="date" placeholder="select Date" name="date_from" onChange={this.handleChange} /></td>
+            </tr>
+            <tr> 
+              <td><label htmlFor = "date_to">To</label></td>
+              <td><input type="date" placeholder="select Date" name="date_to" onChange={this.handleChange} /></td>
+            </tr>
+            <tr>
+              <td><label htmlFor = "leave_type">Leave Type</label></td>
+              <td><input type="text" placeholder="Leave Type" name="leave_type" onChange={this.handleChange} /></td>
+            </tr>
+            <tr>
+              <td><label htmlFor = "description">Description</label></td>
+              <td><textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} /></td>
+            </tr>
+            <tr>
+              <td><input type="submit" value="Create Leave" className="btn btn-primary" disabled={!this.validateForData()} onClick={this.handleClick} /></td>
+            </tr>
+          </tbody>
         </table>
       </form>
     </div>  
