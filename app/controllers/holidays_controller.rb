@@ -4,8 +4,12 @@ class HolidaysController < ApplicationController
   end
 
   def create
-    holiday = current_user.holidays.build(holiday_params)      
-    holiday.save
+    begin
+      holiday = current_user.holidays.build(holiday_params)      
+      holiday.save!
+    rescue
+      flash[:error] = holiday.errors.full_messages.join(", ").html_safe
+    end
   end
 
   def update

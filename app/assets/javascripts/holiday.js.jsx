@@ -42,7 +42,7 @@ var Holiday = React.createClass({
         url: 'holidays/'+id,
         method: 'PUT',
         dataType: "json",
-        data: { holiday: { date_from: date_from, date_to: date_to, leave_type: leave_type} },
+        data: { holiday: { date_from: date_from, date_to: date_to, leave_type: leave_type , description: description} },
         success: (data) => {
           this.setState({
             edit: false
@@ -54,7 +54,7 @@ var Holiday = React.createClass({
       }
     },
 
-  holidayRow: function() {
+  holidayRecord: function() {
     return (
       <tr> 
         <td>{this.props.holiday.date_from}</td>
@@ -65,9 +65,10 @@ var Holiday = React.createClass({
         
         <td>{this.props.holiday.leave_type}</td>
         
-        <td><input type="button" value='Edit' onClick={this.handleToggle}/>
+        <td>
+          <input type="button" className = 'btn btn-primary' value='Edit' onClick={this.handleToggle}/>
         
-        <input type="button" value='Delete' onClick={this.handleDelete} />
+          <input type="button" className= 'btn btn-danger'  value='Delete' onClick={this.handleDelete} />
 
         </td>
 
@@ -95,15 +96,15 @@ var Holiday = React.createClass({
         </td>
         
         <td>
-          <input type="button" className='btn btn-default btn-sm' value='Update' onClick={this.handleEdit} />
+          <input type="button" className = 'btn btn-success' value='Update' onClick={this.handleEdit} />
 
-          <input type="button" className='btn btn-danger btn-sm' value="Cancel" onClick={this.handleToggle} />
+          <input type="button" className = 'btn btn-danger' value="Cancel" onClick={this.handleToggle} />
         </td>
       </tr>
     );
   },
 
   render: function() {
-    return this.state.edit ? this.holidayForm() : this.holidayRow();
+    return this.state.edit ? this.holidayForm() : this.holidayRecord();
   }
 });

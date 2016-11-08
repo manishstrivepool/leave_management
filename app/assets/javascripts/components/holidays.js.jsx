@@ -8,7 +8,7 @@ var Holidays = React.createClass({
 
   addHoliday: function(holiday) {
 
-  var holidays = React.addons.update(this.state.holidays, { $push: [holiday] });
+    var holidays = React.addons.update(this.state.holidays, { $push: [holiday] });
 
     this.setState({
       holidays: holidays
@@ -55,6 +55,7 @@ var Holidays = React.createClass({
             <th>Date_To</th>
             <th>Description</th>
             <th>Leave_Type</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
