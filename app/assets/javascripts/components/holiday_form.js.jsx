@@ -21,25 +21,22 @@ var HolidayForm = React.createClass({
     });
   },
   handleClick: function(e){
-    if ( this.state.date_from > this.state.date_to ) {
-      alert("The value of Date_To must be greater than Date_From")
-    }
-    else {
-      $.ajax({
-        url: 'holidays/create',
-        method: 'POST',
-        data: {holiday: this.state},
-        success: (data) => {
-          this.props.onSubmit(data);
-          this.setState({
-            date_from: '',
-            date_to: '',
-            description: '',
-            leave_type: ''
-          });
-        }
-      });
-    }
+    e.preventDefault();
+    $.ajax({
+      url: 'holidays/create',
+      method: 'POST',
+      dataType: "json",
+      data: {holiday: this.state},
+      success: (data) => {
+        this.props.onSubmit(data);
+        this.setState({
+          date_from: '',
+          date_to: '',
+          description: '',
+          leave_type: ''
+        });
+      }
+    });
   },
 
   render: function() {
