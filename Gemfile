@@ -24,6 +24,12 @@ gem 'devise'
 
 gem 'therubyracer'
 
+gem 'jquery-ui-rails'
+
+gem 'bootstrap-sass'
+
+gem 'sprockets-rails'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

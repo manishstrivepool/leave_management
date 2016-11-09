@@ -6,6 +6,12 @@ var Holiday = React.createClass({
     };
   },
 
+  componentDidUpdate: function() {
+    $('.date').datepicker({
+      dateFormat: 'yy/mm/dd'
+    });
+  },
+
   handleToggle: function(e) {
     e.preventDefault();
     this.setState({
@@ -32,17 +38,11 @@ var Holiday = React.createClass({
     var date_to = this.refs['date_to'].value;
     var description = this.refs['description'].value;
     var leave_type = this.refs['leave_type'].value;
-
-    if ( date_from > date_to ) {
-      alert("The value of Date_To must be greater than Date_From")
-    }
-    else {
-    
       $.ajax({
         url: 'holidays/'+id,
         method: 'PUT',
         dataType: "json",
-        data: { holiday: { date_from: date_from, date_to: date_to, leave_type: leave_type} },
+        data: { holiday: { date_from: date_from, date_to: date_to, description: description, leave_type: leave_type,} },
         success: (data) => {
           this.setState({
             edit: false
@@ -51,7 +51,6 @@ var Holiday = React.createClass({
         this.props.handleEditHoliday(this.props.holiday, data);
         }
       });
-      }
     },
 
   holidayRow: function() {
@@ -67,9 +66,7 @@ var Holiday = React.createClass({
         
         <td><input type="button" value='Edit' onClick={this.handleToggle}/>
         
-        <input type="button" value='Delete' onClick={this.handleDelete} />
-
-        </td>
+        <input type="button" value='Delete' onClick={this.handleDelete} /></td>
 
       </tr>
     );
@@ -79,11 +76,11 @@ var Holiday = React.createClass({
     return ( 
       <tr>
         <td>
-          <input type="date" placeholder="select Date" ref="date_from" className="form-control" defaultValue={this.props.holiday.date_from} />
+          <input className="date" placeholder="YYYY-MM-DD" ref="date_from" defaultValue={this.props.holiday.date_from} />
         </td>
 
         <td>
-          <input type="date" placeholder="select Date" ref="date_to" className="form-control" defaultValue={this.props.holiday.date_to} />
+          <input className="date" placeholder="YYYY-MM-DD" ref="date_to" defaultValue={this.props.holiday.date_to} />
         </td>
 
         <td>
