@@ -1,5 +1,5 @@
 class HolidaysController < ApplicationController
-	def index
+  def index
     @holidays = Holiday.where(user_id: current_user)
   end
 
