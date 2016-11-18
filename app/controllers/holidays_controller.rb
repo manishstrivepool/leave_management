@@ -4,8 +4,8 @@ class HolidaysController < ApplicationController
   end
 
   def create
-    holiday = current_user.holidays.build(holiday_params)      
-    holiday.save
+    @holiday = current_user.holidays.create(holiday_params)
+    render status: 200, json: @holiday.to_json
   end
 
   def update

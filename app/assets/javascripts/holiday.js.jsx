@@ -44,11 +44,10 @@ var Holiday = React.createClass({
         dataType: "json",
         data: { holiday: { date_from: date_from, date_to: date_to, description: description, leave_type: leave_type,} },
         success: (data) => {
+          this.props.handleEditHoliday(this.props.holiday, data);
           this.setState({
             edit: false
           });
-
-        this.props.handleEditHoliday(this.props.holiday, data);
         }
       });
     },
@@ -84,7 +83,7 @@ var Holiday = React.createClass({
         </td>
 
         <td>
-          <textarea type="text" placeholder="description" ref="description" className="form-control" defaultValue={this.props.holiday.description} />
+          <textarea type="text" placeholder="Description" ref="description" className="form-control" defaultValue={this.props.holiday.description} />
         </td>
 
         <td>

@@ -14,15 +14,18 @@
  *= require_self
  */
   #ui-datepicker-div {
-     background: whitesmoke;
+    background: aliceblue;
+    width: 210px;
+    padding-left: 10px;
   }
 
   .ui-datepicker-calendar {
-      width: 184px !important;
+      width: 200px !important;
   }
 
   .ui-datepicker-next.ui-corner-all {
     float: right;
+    margin-right: 10px;
   }
 
 @import "bootstrap-sprockets";
@@ -30,4 +33,33 @@
 
   .container {
     margin-top: -20px;
+  }
+
+  h4 {
+    margin-top: 24px;
+  }
+
+  .navbar-brand {
+    margin-top: 3px;
+    line-height: 60px;
+  }
+
+  button.btn.btn-primary {
+    margin-left: 190px;
+  }
+
+  .container.leave-margin {
+    margin-top: 10px;
+  }
+
+  textarea#description {
+    width: 350px;
+  }
+
+  #dp1479464034848 {
+    width: 350px;
+  }
+
+  .ui-datepicker-title {
+    padding-left: 45px; 
   }

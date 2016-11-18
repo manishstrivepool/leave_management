@@ -1,0 +1,23 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="container">
+        <a class="navbar-brand home-margin" <%= link_to "Home", root_path %>>
+          <% if user_signed_in? %>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a class="dropdown-toggle home-margin" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><h4><%= current_user.email %><span class="caret"></span></h4></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                  <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </li>
+            </ul>
+          <% end %>
+        </a>
+      </div>
+     </div>
+    </div>
+  </div>
+</nav>
