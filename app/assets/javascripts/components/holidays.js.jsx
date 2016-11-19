@@ -39,10 +39,10 @@ var Holidays = React.createClass({
       <table className="table table-bordered">
         <thead>
           <tr>
-            <th>Date_From</th>
-            <th>Date_To</th>
+            <th>Date From</th>
+            <th>Date To</th>
             <th>Description</th>
-            <th>Leave_Type</th>
+            <th>Leave Type</th>
             <th>Actions</th>
           </tr>
         </thead>
