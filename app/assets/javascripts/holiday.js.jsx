@@ -63,9 +63,9 @@ var Holiday = React.createClass({
         
         <td>{this.props.holiday.leave_type}</td>
         
-        <td><input type="button" value='Edit' onClick={this.handleToggle}/>
+        <td><input type="button" className="btn btn-success" value='Edit' onClick={this.handleToggle}/>
         
-        <input type="button" value='Delete' onClick={this.handleDelete} /></td>
+        <input type="button" className="btn btn-danger" value='Delete' onClick={this.handleDelete} /></td>
 
       </tr>
     );
@@ -91,9 +91,9 @@ var Holiday = React.createClass({
         </td>
         
         <td>
-          <input type="button" className='btn btn-default btn-sm' value='Update' onClick={this.handleEdit} />
+          <input type="button" className='btn btn-primary btn-sm' value='Update' onClick={this.handleEdit} />
 
-          <input type="button" className='btn btn-danger btn-sm' value="Cancel" onClick={this.handleToggle} />
+          <input type="button" className='btn btn-warning btn-sm' value="Cancel" onClick={this.handleToggle} />
         </td>
       </tr>
     );
