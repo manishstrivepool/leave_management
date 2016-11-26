@@ -30,6 +30,8 @@ gem 'bootstrap-sass'
 
 gem 'sprockets-rails'
 
+gem 'cancancan', '~> 1.10'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

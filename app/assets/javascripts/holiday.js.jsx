@@ -19,17 +19,20 @@ var Holiday = React.createClass({
     });
   },
 
-  handleDelete: function(e){
+  handleLeaveCancel: function(e){
     e.preventDefault();
     var id = this.props.holiday.id
-    $.ajax({
-      url: 'holidays/'+id,
-      type: 'DELETE',
-      success: () => {
-        this.props.removeHoliday(id);
-      }
-    }); 
-  },
+    var status = "Leave Cancelled";
+      $.ajax({
+        url: 'holidays/'+id,
+        method: 'PUT',
+        dataType: "json",
+        data: { holiday: { status: status} },
+        success: (data) => {
+          this.props.handleStatus(this.props.holiday, data);
+        }
+      });
+    },
 
   handleEdit: function(e){
     e.preventDefault();
@@ -62,10 +65,12 @@ var Holiday = React.createClass({
         <td>{this.props.holiday.description}</td>
         
         <td>{this.props.holiday.leave_type}</td>
+
+        <td>{this.props.holiday.status}</td>
         
-        <td><input type="button" className="btn btn-success" value='Edit' onClick={this.handleToggle}/>
+        <td><input type="button" className="btn btn-success btn-xs" value='Edit' onClick={this.handleToggle}/>
         
-        <input type="button" className="btn btn-danger" value='Delete' onClick={this.handleDelete} /></td>
+        <input type="button" className="btn btn-danger btn-xs" value='Cancel Leave' onClick={this.handleLeaveCancel} /></td>
 
       </tr>
     );
@@ -89,11 +94,15 @@ var Holiday = React.createClass({
         <td>
           <input type="text" placeholder="Leave Type" ref="leave_type" className="form-control" defaultValue={this.props.holiday.leave_type} />
         </td>
+
+        <td>
+          <input className="form-control" defaultValue={this.props.holiday.status} disabled="true"/>
+        </td>
         
         <td>
-          <input type="button" className='btn btn-primary btn-sm' value='Update' onClick={this.handleEdit} />
+          <input type="button" className='btn btn-primary btn-xs' value='Update' onClick={this.handleEdit} />
 
-          <input type="button" className='btn btn-warning btn-sm' value="Cancel" onClick={this.handleToggle} />
+          <input type="button" className='btn btn-warning btn-xs' value="Cancel" onClick={this.handleToggle} />
         </td>
       </tr>
     );

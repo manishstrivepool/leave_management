@@ -1,2 +1,5 @@
-
-<%= react_component 'Holidays', { data: @holidays } %>
+<% if current_user.role == "user" %>
+  <%= react_component 'Holidays', { data: @holidays } %>
+<% else %>
+  <%= react_component 'Admindashboard', { data: @holidays } %>
+<% end %>
