@@ -7,7 +7,7 @@ class User < ApplicationRecord
  #  end
 
   def admin?
-    self.role == "admin"
+    role == "admin"
   end
 
   has_many :holidays

@@ -27,26 +27,26 @@ var Admindashboard = React.createClass({
     }.bind(this));
 
     return (
-    <div className="container">
-      <hr />
-      <table className="table table-bordered">
-        <thead>
-          <tr>
-            <th>User Name</th>
-            <th>Date From</th>
-            <th>Date To</th>
-            <th>Description</th>
-            <th>Leave Type</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+      <div className="container">
+        <hr />
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th>User Name</th>
+              <th>Date From</th>
+              <th>Date To</th>
+              <th>Description</th>
+              <th>Leave Type</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          { holidays }
-        </tbody>        
-      </table>
-    </div>
+          <tbody>
+            { holidays }
+          </tbody>        
+        </table>
+      </div>
     );
   }
 })
