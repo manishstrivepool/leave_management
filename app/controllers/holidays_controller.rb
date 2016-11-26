@@ -1,6 +1,7 @@
 class HolidaysController < ApplicationController
   def index
-    @holidays = Holiday.where(user_id: current_user)
+    @holidays = Holiday.joins(:user).select("holidays.*, users.name")
+    @holidays = @holidays.where(user_id: current_user) unless (current_user.role == "admin")
   end
 
   def create
@@ -21,7 +22,8 @@ class HolidaysController < ApplicationController
   end
 
   private
-    def holiday_params
-      params.require(:holiday).permit(:date_from, :date_to, :leave_type, :description)
-    end
+  
+  def holiday_params
+    params.require(:holiday).permit(:date_from, :date_to, :leave_type, :description, :status)
+  end
 end

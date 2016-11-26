@@ -11,11 +11,11 @@ var Holidays = React.createClass({
     this.setState({ holidays: holidays });
   },
 
-  removeHoliday: function(id){
-    var holidays = this.state.holidays.filter(function(r){
-      return r.id != id;
-    });    
-    this.setState({ holidays: holidays });
+  handleStatus: function(holiday, data) {
+    var index = this.state.holidays.indexOf(holiday);
+    var holidays = React.addons.update(this.state.holidays, { $splice: [[index, 1, data]] });
+    
+    this.setState({ holidays: holidays }); 
   },
 
   handleEditHoliday: function(holiday, data) {
@@ -28,7 +28,7 @@ var Holidays = React.createClass({
   render: function() {
 
     var holidays= this.state.holidays.map(function(holiday) {
-      return <Holiday key={holiday.id} holiday={holiday} removeHoliday={this.removeHoliday} handleEditHoliday={this.handleEditHoliday} />;
+      return <Holiday key={holiday.id} holiday={holiday} handleStatus={this.handleStatus} handleEditHoliday={this.handleEditHoliday} />;
     }.bind(this));
 
     return (
@@ -43,6 +43,7 @@ var Holidays = React.createClass({
             <th>Date To</th>
             <th>Description</th>
             <th>Leave Type</th>
+            <th>Status</th>
             <th>Actions</th>
           </tr>
         </thead>
